@@ -40,7 +40,6 @@ typedef int WebSQLError;
 // Open / Close
 -(void) open: (NSDictionary *) options success:(RCTResponseSenderBlock)success error:(RCTResponseSenderBlock)error;
 -(void) close: (NSDictionary *) options success:(RCTResponseSenderBlock)success error:(RCTResponseSenderBlock)error;
--(void) attach: (NSDictionary *) options success:(RCTResponseSenderBlock)success error:(RCTResponseSenderBlock)error;
 -(void) delete: (NSDictionary *) options success:(RCTResponseSenderBlock)success error:(RCTResponseSenderBlock)error;
 
 // Batch processing interface
@@ -51,6 +50,4 @@ typedef int WebSQLError;
 -(void) backgroundExecuteSql:(NSDictionary *) options success:(RCTResponseSenderBlock)success error:(RCTResponseSenderBlock)error;
 -(void) executeSql:(NSDictionary *) options success:(RCTResponseSenderBlock)success error:(RCTResponseSenderBlock)error;
 
-// Echo Test
--(void) echoStringValue:(NSDictionary *) options success:(RCTResponseSenderBlock)success error:(RCTResponseSenderBlock)error;
 @end

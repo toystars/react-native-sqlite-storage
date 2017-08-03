@@ -419,7 +419,9 @@ public class SQLitePlugin extends ReactContextBaseJavaModule {
 
             if (dbfile == null) {
                 openFlags = SQLiteDatabase.OPEN_READWRITE | SQLiteDatabase.CREATE_IF_NECESSARY;
-                dbfile = this.getContext().getDatabasePath(dbname);
+//                 dbfile = this.getContext().getDatabasePath(dbname);
+                dbfile = this.getContext().getFileStreamPath(dbname);
+//                 This is for get file downloaded file by fetch-blob from download path
 
                 if (!dbfile.exists() && in != null) {
                     Log.v("info", "Copying pre-populated db asset to destination");

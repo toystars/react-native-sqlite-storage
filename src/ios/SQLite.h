@@ -13,7 +13,11 @@
  * See http://opensource.org/licenses/alphabetical for full text.
  */
 
-#import "RCTBridgeModule.h"
+#if __has_include(<React/RCTBridgeModule.h>)
+  #import <React/RCTBridgeModule.h>
+#else
+  #import "RCTBridgeModule.h"
+#endif
 
 // Used to remove dependency on sqlite3.h in this header:
 struct sqlite3;

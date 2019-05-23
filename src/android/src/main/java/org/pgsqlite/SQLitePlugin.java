@@ -405,9 +405,17 @@ public class SQLitePlugin extends ReactContextBaseJavaModule {
                     in = this.getContext().getAssets().open(assetFilePath);
                     Log.v("info", "Located pre-populated DB asset in app bundle subdirectory: " + assetFilePath);
                 } else {
-                    File filesDir = this.getContext().getFilesDir();
-                    assetFilePath = assetFilePath.startsWith("/") ? assetFilePath.substring(1) : assetFilePath;
-                    File assetFile = new File(filesDir, assetFilePath);
+                    File assetFile;
+                    if (assetFilePath.startsWith("/") && openFlags != SQLiteDatabase.OPEN_READONLY) {
+                        // for using absolute path
+                        assetFile = new File(assetFilePath);
+                        dbfile = assetFile;
+                    } else {
+                        File filesDir = this.getContext().getFilesDir();
+                        assetFilePath = assetFilePath.startsWith("/") ? assetFilePath.substring(1) : assetFilePath;
+                        assetFile = new File(filesDir, assetFilePath);
+                    }
+
                     in = new FileInputStream(assetFile);
                     Log.v("info", "Located pre-populated DB asset in Files subdirectory: " + assetFile.getCanonicalPath());
                     if (openFlags == SQLiteDatabase.OPEN_READONLY) {
